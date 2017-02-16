@@ -1,0 +1,25 @@
+caves:
+  image: luvemil/dst:base
+  ports:
+    - 11000:11000/udp
+  restart: always
+  environment:
+    - IS_SLAVE=1
+  links:
+    - master
+  volumes:
+    - ./servers/caves:/home/steam/.klei/DoNotStarveTogether/MyDediServer/Caves
+  stdin_open: true
+  tty: true
+
+master:
+  image: luvemil/dst:base
+  ports:
+    - 10999:10999/udp
+  restart: always
+  volumes:
+    - ./servers/master:/home/steam/.klei/DoNotStarveTogether/MyDediServer/Master
+  entrypoint: /home/dst/server_dst/bin/start_shard.sh
+  command: Master
+  stdin_open: true
+  tty: true
