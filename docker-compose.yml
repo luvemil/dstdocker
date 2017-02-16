@@ -8,7 +8,9 @@ caves:
   links:
     - master
   volumes:
-    - ./servers/caves:/home/steam/.klei/DoNotStarveTogether/MyDediServer/Caves
+    - ./servers/caves:/root/.klei/DoNotStarveTogether/MyDediServer/Caves
+  entrypoint: /root/server_dst/bin/start_shard.sh
+  command: Caves
   stdin_open: true
   tty: true
 
@@ -18,8 +20,8 @@ master:
     - 10999:10999/udp
   restart: always
   volumes:
-    - ./servers/master:/home/steam/.klei/DoNotStarveTogether/MyDediServer/Master
-  entrypoint: /home/dst/server_dst/bin/start_shard.sh
+    - ./servers/master:/root/.klei/DoNotStarveTogether/MyDediServer/Master
+  entrypoint: /root/server_dst/bin/start_shard.sh
   command: Master
   stdin_open: true
   tty: true

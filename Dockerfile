@@ -14,17 +14,16 @@ RUN apt-get install -y \
 
 RUN pip install crudini
 
-RUN useradd -ms /bin/bash dst
-
-USER dst
-WORKDIR /home/dst
+WORKDIR /root
 
 RUN wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
 RUN tar -xvzf steamcmd_linux.tar.gz && rm steamcmd_linux.tar.gz
 RUN mkdir server_dst
 
 # Install Dont Starve Together
-RUN ./steamcmd.sh +login anonymous +force_install_dir /home/dst/server_dst +app_update 343050 validate +quit
+RUN ./steamcmd.sh +login anonymous +force_install_dir /dst/server_dst +app_update 343050 validate +quit
+
+ENV DST_ROOT /root
 
 RUN mkdir -p .klei/DoNotStarveTogether/MyDediServer
 RUN echo "Copying executables"
