@@ -18,6 +18,7 @@ master:
   image: luvemil/dst:base
   ports:
     - 10999:10999/udp
+    - 11001:11001/udp
   restart: always
   volumes:
     - ./servers/master:/root/.klei/DoNotStarveTogether/MyDediServer/Master
