@@ -21,7 +21,7 @@ RUN tar -xvzf steamcmd_linux.tar.gz && rm steamcmd_linux.tar.gz
 RUN mkdir server_dst
 
 # Install Dont Starve Together
-RUN ./steamcmd.sh +login anonymous +force_install_dir /dst/server_dst +app_update 343050 validate +quit
+RUN ./steamcmd.sh +login anonymous +force_install_dir /root/server_dst +app_update 343050 validate +quit
 
 ENV DST_ROOT /root
 
